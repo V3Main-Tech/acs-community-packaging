@@ -5,7 +5,6 @@ metadata:
   namespace: default
   selfLink: /apis/apps/v1/namespaces/default/deployments/postgres
   uid: b5bd4ade-1c04-4691-a27a-fd4a0f65bd69
-  resourceVersion: '56350'
   generation: 1
   creationTimestamp: '2020-12-10T15:56:44Z'
   labels:
