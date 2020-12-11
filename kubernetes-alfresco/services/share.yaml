@@ -1,0 +1,49 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: share
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/share
+  uid: 171f7b35-c23d-45e3-b3c0-e5d5ae56796d
+  creationTimestamp: '2020-12-10T16:06:53Z'
+  labels:
+    io.kompose.service: share
+  managedFields:
+    - manager: kubectl
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-10T16:06:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:io.kompose.service': {}
+        'f:spec':
+          'f:externalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8080,"protocol":"TCP"}':
+              .: {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:io.kompose.service': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 31786
+  selector:
+    io.kompose.service: share
+  clusterIP: 10.103.91.115
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}
