@@ -1,0 +1,56 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/postgres
+  uid: 79c83475-e875-4430-846f-493fad5c8f4a
+  resourceVersion: '53396'
+  creationTimestamp: '2020-12-10T15:56:52Z'
+  labels:
+    io.kompose.service: postgres
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.21.0 (992df58d8)
+  managedFields:
+    - manager: kubectl
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-10T15:56:52Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kompose.cmd': {}
+            'f:kompose.version': {}
+          'f:labels':
+            .: {}
+            'f:io.kompose.service': {}
+        'f:spec':
+          'f:ports':
+            .: {}
+            'k:{"port":5432,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:io.kompose.service': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: '5432'
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    io.kompose.service: postgres
+  clusterIP: 10.99.124.87
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
