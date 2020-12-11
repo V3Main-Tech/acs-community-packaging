@@ -5,7 +5,6 @@ metadata:
   namespace: default
   selfLink: /api/v1/namespaces/default/services/transform-core-aio
   uid: cc78ef6b-712a-442e-b2de-c5b17eed6441
-  resourceVersion: '53435'
   creationTimestamp: '2020-12-10T15:57:12Z'
   labels:
     io.kompose.service: transform-core-aio
