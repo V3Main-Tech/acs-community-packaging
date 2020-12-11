@@ -1,0 +1,171 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: v3md-alfresco
+  namespace: default
+  selfLink: /apis/apps/v1/namespaces/default/deployments/v3md-alfresco
+  uid: 16a7e668-a829-4161-8f68-eaafc30de04e
+  generation: 1
+  creationTimestamp: '2020-12-10T16:15:38Z'
+  labels:
+    k8s-app: v3md-alfresco
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+  managedFields:
+    - manager: dashboard
+      operation: Update
+      apiVersion: apps/v1
+      time: '2020-12-10T16:15:38Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s-app': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:replicas': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector':
+            'f:matchLabels':
+              .: {}
+              'f:k8s-app': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:k8s-app': {}
+              'f:name': {}
+            'f:spec':
+              'f:containers':
+                'k:{"name":"v3md-alfresco"}':
+                  .: {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"JAVA_OPTS"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:image': {}
+                  'f:imagePullPolicy': {}
+                  'f:name': {}
+                  'f:resources': {}
+                  'f:securityContext':
+                    .: {}
+                    'f:privileged': {}
+                  'f:terminationMessagePath': {}
+                  'f:terminationMessagePolicy': {}
+              'f:dnsPolicy': {}
+              'f:imagePullSecrets':
+                .: {}
+                'k:{"name":"regcred"}':
+                  .: {}
+                  'f:name': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2020-12-11T08:44:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: v3md-alfresco
+  template:
+    metadata:
+      name: v3md-alfresco
+      creationTimestamp: null
+      labels:
+        k8s-app: v3md-alfresco
+    spec:
+      containers:
+        - name: v3md-alfresco
+          image: 'v3md/acs-community-packaging:v3macscmsC10'
+          env:
+            - name: JAVA_OPTS
+              value: >-
+                -Ddb.driver=org.postgresql.Driver -Ddb.username=alfresco
+                -Ddb.password=alfresco            
+                -Ddb.url=jdbc:postgresql://10.99.124.87:5432/alfresco
+                -Dsolr.host=10.105.113.120 -Dsolr.port=8083            
+                -Dsolr.secureComms=none -Dsolr.base.url=/solr
+                -Dindex.subsystem.name=solr6             -Dshare.host=172.17.0.2
+                -Dshare.port=31786 -Dalfresco.host=localhost
+                -Dalfresco.port=8080            
+                -Daos.baseUrlOverwrite=http://localhost:8080/alfresco/aos
+                -Dmessaging.broker.url="failover:(nio://10.100.38.3:61616)?timeout=3000&jms.useCompression=true"            
+                -Ddeployment.method=DOCKER_COMPOSE
+                -DlocalTransform.core-aio.url=http://10.108.79.96:8090/            
+                -Dalfresco-pdf-renderer.url=http://10.108.79.96:8090/
+                -Djodconverter.url=http://10.108.79.96:8090/            
+                -Dimg.url=http://10.108.79.96:8090/
+                -Dtika.url=http://10.108.79.96:8090/            
+                -Dtransform.misc.url=http://10.108.79.96:8090/
+                -Dcsrf.filter.enabled=false -XX:MinRAMPercentage=50
+                -XX:MaxRAMPercentage=80 -Dencryption.keystore.type=JCEKS
+                -Dencryption.cipherAlgorithm=DESede/CBC/PKCS5Padding
+                -Dencryption.keyAlgorithm=DESede
+                -Dencryption.keystore.location=/usr/local/tomcat/shared/classes/alfresco/extension/keystore/keystore
+                -Dmetadata-keystore.password=mp6yc0UD9e
+                -Dmetadata-keystore.aliases=metadata
+                -Dmetadata-keystore.metadata.password=oKIWzVdEdA
+                -Dmetadata-keystore.metadata.algorithm=DESede
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            privileged: false
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      imagePullSecrets:
+        - name: regcred
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

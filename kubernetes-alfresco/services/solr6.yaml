@@ -1,0 +1,55 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: solr6
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/solr6
+  uid: ea609e0c-46f5-4e14-9d6a-d34b074206e4
+  creationTimestamp: '2020-12-10T16:02:35Z'
+  labels:
+    io.kompose.service: solr6
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.21.0 (992df58d8)
+  managedFields:
+    - manager: kubectl
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-10T16:02:35Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kompose.cmd': {}
+            'f:kompose.version': {}
+          'f:labels':
+            .: {}
+            'f:io.kompose.service': {}
+        'f:spec':
+          'f:ports':
+            .: {}
+            'k:{"port":8083,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:io.kompose.service': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: '8083'
+      protocol: TCP
+      port: 8083
+      targetPort: 8983
+  selector:
+    io.kompose.service: solr6
+  clusterIP: 10.105.113.120
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

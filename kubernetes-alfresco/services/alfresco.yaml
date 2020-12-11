@@ -1,0 +1,53 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: v3md-alfresco
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/v3md-alfresco
+  uid: 1292404e-6485-4585-929b-64fa11743a4f
+  creationTimestamp: '2020-12-10T16:17:58Z'
+  labels:
+    k8s-app: v3md-alfresco
+  managedFields:
+    - manager: dashboard
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-10T16:17:58Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:k8s-app': {}
+        'f:spec':
+          'f:clusterIP': {}
+          'f:externalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8080,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:k8s-app': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: tcp-8080-8080-mqghq
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 31313
+  selector:
+    k8s-app: v3md-alfresco
+  clusterIP: 10.101.63.5
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}
