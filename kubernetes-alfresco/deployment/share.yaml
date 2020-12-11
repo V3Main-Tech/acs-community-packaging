@@ -136,7 +136,7 @@ spec:
           image: 'alfresco/alfresco-share:6.2.1'
           env:
             - name: JAVA_OPTS
-              value: ' -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=80 -Dalfresco.host=10.101.63.5 -Dalfresco.port=31611 -Dalfresco.context=alfresco -Dalfresco.protocol=http '
+              value: ' -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=80 -Dalfresco.host=10.101.63.5 -Dalfresco.port=8080 -Dalfresco.context=alfresco -Dalfresco.protocol=http '
             - name: REPO_HOST
               value: 10.101.63.5
             - name: REPO_PORT
