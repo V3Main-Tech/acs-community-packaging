@@ -1,0 +1,56 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: transform-core-aio
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/transform-core-aio
+  uid: cc78ef6b-712a-442e-b2de-c5b17eed6441
+  resourceVersion: '53435'
+  creationTimestamp: '2020-12-10T15:57:12Z'
+  labels:
+    io.kompose.service: transform-core-aio
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.21.0 (992df58d8)
+  managedFields:
+    - manager: kubectl
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-10T15:57:12Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kompose.cmd': {}
+            'f:kompose.version': {}
+          'f:labels':
+            .: {}
+            'f:io.kompose.service': {}
+        'f:spec':
+          'f:ports':
+            .: {}
+            'k:{"port":8090,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:io.kompose.service': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+spec:
+  ports:
+    - name: '8090'
+      protocol: TCP
+      port: 8090
+      targetPort: 8090
+  selector:
+    io.kompose.service: transform-core-aio
+  clusterIP: 10.108.79.96
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}
