@@ -2,109 +2,10 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: v3md-alfresco
-  namespace: default
-  selfLink: /apis/apps/v1/namespaces/default/deployments/v3md-alfresco
-  uid: 16a7e668-a829-4161-8f68-eaafc30de04e
-  generation: 1
-  creationTimestamp: '2020-12-10T16:15:38Z'
+  namespace: v3md-alfresco
+  selfLink: /apis/apps/v1/namespaces/v3md-alfresco/deployments/v3md-alfresco
   labels:
     k8s-app: v3md-alfresco
-  annotations:
-    deployment.kubernetes.io/revision: '1'
-  managedFields:
-    - manager: dashboard
-      operation: Update
-      apiVersion: apps/v1
-      time: '2020-12-10T16:15:38Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:labels':
-            .: {}
-            'f:k8s-app': {}
-        'f:spec':
-          'f:progressDeadlineSeconds': {}
-          'f:replicas': {}
-          'f:revisionHistoryLimit': {}
-          'f:selector':
-            'f:matchLabels':
-              .: {}
-              'f:k8s-app': {}
-          'f:strategy':
-            'f:rollingUpdate':
-              .: {}
-              'f:maxSurge': {}
-              'f:maxUnavailable': {}
-            'f:type': {}
-          'f:template':
-            'f:metadata':
-              'f:labels':
-                .: {}
-                'f:k8s-app': {}
-              'f:name': {}
-            'f:spec':
-              'f:containers':
-                'k:{"name":"v3md-alfresco"}':
-                  .: {}
-                  'f:env':
-                    .: {}
-                    'k:{"name":"JAVA_OPTS"}':
-                      .: {}
-                      'f:name': {}
-                      'f:value': {}
-                  'f:image': {}
-                  'f:imagePullPolicy': {}
-                  'f:name': {}
-                  'f:resources': {}
-                  'f:securityContext':
-                    .: {}
-                    'f:privileged': {}
-                  'f:terminationMessagePath': {}
-                  'f:terminationMessagePolicy': {}
-              'f:dnsPolicy': {}
-              'f:imagePullSecrets':
-                .: {}
-                'k:{"name":"regcred"}':
-                  .: {}
-                  'f:name': {}
-              'f:restartPolicy': {}
-              'f:schedulerName': {}
-              'f:securityContext': {}
-              'f:terminationGracePeriodSeconds': {}
-    - manager: kube-controller-manager
-      operation: Update
-      apiVersion: apps/v1
-      time: '2020-12-11T08:44:22Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:annotations':
-            .: {}
-            'f:deployment.kubernetes.io/revision': {}
-        'f:status':
-          'f:availableReplicas': {}
-          'f:conditions':
-            .: {}
-            'k:{"type":"Available"}':
-              .: {}
-              'f:lastTransitionTime': {}
-              'f:lastUpdateTime': {}
-              'f:message': {}
-              'f:reason': {}
-              'f:status': {}
-              'f:type': {}
-            'k:{"type":"Progressing"}':
-              .: {}
-              'f:lastTransitionTime': {}
-              'f:lastUpdateTime': {}
-              'f:message': {}
-              'f:reason': {}
-              'f:status': {}
-              'f:type': {}
-          'f:observedGeneration': {}
-          'f:readyReplicas': {}
-          'f:replicas': {}
-          'f:updatedReplicas': {}
 spec:
   replicas: 1
   selector:
@@ -113,7 +14,6 @@ spec:
   template:
     metadata:
       name: v3md-alfresco
-      creationTimestamp: null
       labels:
         k8s-app: v3md-alfresco
     spec:
@@ -149,23 +49,5 @@ spec:
                 -Dmetadata-keystore.aliases=metadata
                 -Dmetadata-keystore.metadata.password=oKIWzVdEdA
                 -Dmetadata-keystore.metadata.algorithm=DESede
-          resources: {}
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
-          securityContext:
-            privileged: false
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 30
-      dnsPolicy: ClusterFirst
-      securityContext: {}
       imagePullSecrets:
         - name: regcred
-      schedulerName: default-scheduler
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
-  revisionHistoryLimit: 10
-  progressDeadlineSeconds: 600

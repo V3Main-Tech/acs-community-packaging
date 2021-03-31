@@ -4,117 +4,8 @@ metadata:
   name: transform-core-aio
   namespace: default
   selfLink: /apis/apps/v1/namespaces/default/deployments/transform-core-aio
-  uid: 4bc00487-9773-4157-b93e-3e2b06eed960
-  generation: 1
-  creationTimestamp: '2020-12-10T15:57:04Z'
   labels:
     io.kompose.service: transform-core-aio
-  annotations:
-    deployment.kubernetes.io/revision: '1'
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.21.0 (992df58d8)
-  managedFields:
-    - manager: kubectl
-      operation: Update
-      apiVersion: apps/v1
-      time: '2020-12-10T15:57:04Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:annotations':
-            .: {}
-            'f:kompose.cmd': {}
-            'f:kompose.version': {}
-          'f:labels':
-            .: {}
-            'f:io.kompose.service': {}
-        'f:spec':
-          'f:progressDeadlineSeconds': {}
-          'f:replicas': {}
-          'f:revisionHistoryLimit': {}
-          'f:selector':
-            'f:matchLabels':
-              .: {}
-              'f:io.kompose.service': {}
-          'f:strategy':
-            'f:rollingUpdate':
-              .: {}
-              'f:maxSurge': {}
-              'f:maxUnavailable': {}
-            'f:type': {}
-          'f:template':
-            'f:metadata':
-              'f:annotations':
-                .: {}
-                'f:kompose.cmd': {}
-                'f:kompose.version': {}
-              'f:labels':
-                .: {}
-                'f:io.kompose.service': {}
-            'f:spec':
-              'f:containers':
-                'k:{"name":"transform-core-aio"}':
-                  .: {}
-                  'f:env':
-                    .: {}
-                    'k:{"name":"JAVA_OPTS"}':
-                      .: {}
-                      'f:name': {}
-                      'f:value': {}
-                  'f:image': {}
-                  'f:imagePullPolicy': {}
-                  'f:name': {}
-                  'f:ports':
-                    .: {}
-                    'k:{"containerPort":8090,"protocol":"TCP"}':
-                      .: {}
-                      'f:containerPort': {}
-                      'f:protocol': {}
-                  'f:resources':
-                    .: {}
-                    'f:limits':
-                      .: {}
-                      'f:memory': {}
-                  'f:terminationMessagePath': {}
-                  'f:terminationMessagePolicy': {}
-              'f:dnsPolicy': {}
-              'f:restartPolicy': {}
-              'f:schedulerName': {}
-              'f:securityContext': {}
-              'f:terminationGracePeriodSeconds': {}
-    - manager: kube-controller-manager
-      operation: Update
-      apiVersion: apps/v1
-      time: '2020-12-11T08:44:20Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:metadata':
-          'f:annotations':
-            'f:deployment.kubernetes.io/revision': {}
-        'f:status':
-          'f:availableReplicas': {}
-          'f:conditions':
-            .: {}
-            'k:{"type":"Available"}':
-              .: {}
-              'f:lastTransitionTime': {}
-              'f:lastUpdateTime': {}
-              'f:message': {}
-              'f:reason': {}
-              'f:status': {}
-              'f:type': {}
-            'k:{"type":"Progressing"}':
-              .: {}
-              'f:lastTransitionTime': {}
-              'f:lastUpdateTime': {}
-              'f:message': {}
-              'f:reason': {}
-              'f:status': {}
-              'f:type': {}
-          'f:observedGeneration': {}
-          'f:readyReplicas': {}
-          'f:replicas': {}
-          'f:updatedReplicas': {}
 spec:
   replicas: 1
   selector:
@@ -122,12 +13,8 @@ spec:
       io.kompose.service: transform-core-aio
   template:
     metadata:
-      creationTimestamp: null
       labels:
         io.kompose.service: transform-core-aio
-      annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.21.0 (992df58d8)
     spec:
       containers:
         - name: transform-core-aio
@@ -138,21 +25,3 @@ spec:
           env:
             - name: JAVA_OPTS
               value: ' -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=80'
-          resources:
-            limits:
-              memory: '1610612736'
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 30
-      dnsPolicy: ClusterFirst
-      securityContext: {}
-      schedulerName: default-scheduler
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
-  revisionHistoryLimit: 10
-  progressDeadlineSeconds: 600
