@@ -25,7 +25,7 @@ spec:
               value: >-
                 -Ddb.driver=org.postgresql.Driver -Ddb.username=alfresco
                 -Ddb.password=alfresco            
-                -Ddb.url=jdbc:postgresql://172.20.142.131:5432/alfresco
+                -Ddb.url=jdbc:postgresql://172.20.234.163:5432/alfresco
                 -Dsolr.host=171.20.76.201 -Dsolr.port=8083            
                 -Dsolr.secureComms=none -Dsolr.base.url=/solr
                 -Dindex.subsystem.name=solr6             -Dshare.host=acb70c77ed61f4fb1a5dbd298122a611-979261895.us-west-2.elb.amazonaws.com
@@ -49,12 +49,5 @@ spec:
                 -Dmetadata-keystore.aliases=metadata
                 -Dmetadata-keystore.metadata.password=oKIWzVdEdA
                 -Dmetadata-keystore.metadata.algorithm=DESede
-          volumeMounts:
-            - name: postgres
-              mountPath: "/usr/local/tomcat/alf_data"
-      volumes:
-      - name: postgres
-        persistentVolumeClaim:
-          claimName: postgres-pv-claim
       imagePullSecrets:
         - name: regcred
