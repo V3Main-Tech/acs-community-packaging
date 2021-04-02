@@ -25,21 +25,21 @@ spec:
               value: >-
                 -Ddb.driver=org.postgresql.Driver -Ddb.username=alfresco
                 -Ddb.password=alfresco            
-                -Ddb.url=jdbc:postgresql://10.99.124.87:5432/alfresco
-                -Dsolr.host=10.105.113.120 -Dsolr.port=8083            
+                -Ddb.url=jdbc:postgresql://172.20.142.131:5432/alfresco
+                -Dsolr.host=171.20.76.201 -Dsolr.port=8083            
                 -Dsolr.secureComms=none -Dsolr.base.url=/solr
-                -Dindex.subsystem.name=solr6             -Dshare.host=172.17.0.2
-                -Dshare.port=31786 -Dalfresco.host=localhost
+                -Dindex.subsystem.name=solr6             -Dshare.host=acb70c77ed61f4fb1a5dbd298122a611-979261895.us-west-2.elb.amazonaws.com
+                -Dshare.port=8080 -Dalfresco.host=localhost
                 -Dalfresco.port=8080            
                 -Daos.baseUrlOverwrite=http://localhost:8080/alfresco/aos
-                -Dmessaging.broker.url="failover:(nio://10.100.38.3:61616)?timeout=3000&jms.useCompression=true"            
+                -Dmessaging.broker.url="failover:(nio://172.20.177.160:61616)?timeout=3000&jms.useCompression=true"            
                 -Ddeployment.method=DOCKER_COMPOSE
-                -DlocalTransform.core-aio.url=http://10.108.79.96:8090/            
-                -Dalfresco-pdf-renderer.url=http://10.108.79.96:8090/
-                -Djodconverter.url=http://10.108.79.96:8090/            
-                -Dimg.url=http://10.108.79.96:8090/
-                -Dtika.url=http://10.108.79.96:8090/            
-                -Dtransform.misc.url=http://10.108.79.96:8090/
+                -DlocalTransform.core-aio.url=http://172.20.214.230:8090/            
+                -Dalfresco-pdf-renderer.url=http://172.20.214.230:8090/
+                -Djodconverter.url=http://172.20.214.230:8090/            
+                -Dimg.url=http://172.20.214.230:8090/
+                -Dtika.url=http://172.20.214.230:8090/            
+                -Dtransform.misc.url=http://172.20.214.230:8090/
                 -Dcsrf.filter.enabled=false -XX:MinRAMPercentage=50
                 -XX:MaxRAMPercentage=80 -Dencryption.keystore.type=JCEKS
                 -Dencryption.cipherAlgorithm=DESede/CBC/PKCS5Padding
@@ -49,5 +49,12 @@ spec:
                 -Dmetadata-keystore.aliases=metadata
                 -Dmetadata-keystore.metadata.password=oKIWzVdEdA
                 -Dmetadata-keystore.metadata.algorithm=DESede
+          volumeMounts:
+            - name: postgres
+              mountPath: "/usr/local/tomcat/alf_data"
+      volumes:
+      - name: postgres
+        persistentVolumeClaim:
+          claimName: postgres-pv-claim
       imagePullSecrets:
         - name: regcred
