@@ -5,21 +5,24 @@ metadata:
   namespace: v3md-alfresco
   selfLink: /apis/apps/v1/namespaces/v3md-alfresco/deployments/v3md-alfresco
   labels:
-    k8s-app: v3md-alfresco
+    app: v3md-alfresco
 spec:
   replicas: 1
   selector:
     matchLabels:
-      k8s-app: v3md-alfresco
+      app: v3md-alfresco
   template:
     metadata:
       name: v3md-alfresco
       labels:
-        k8s-app: v3md-alfresco
+        app: v3md-alfresco
     spec:
       containers:
         - name: v3md-alfresco
           image: 'v3md/acs-community-packaging:v3macscmsC10'
+          securityContext:
+            allowPrivilegedEscalation: false
+            runAsUser: 0
           env:
             - name: JAVA_OPTS
               value: >-
@@ -49,5 +52,16 @@ spec:
                 -Dmetadata-keystore.aliases=metadata
                 -Dmetadata-keystore.metadata.password=oKIWzVdEdA
                 -Dmetadata-keystore.metadata.algorithm=DESede
+          volumeMounts:
+            - mountPath: /usr/local/tomcat/alf_data
+              name: alfresco
       imagePullSecrets:
         - name: regcred
+      securityContext:
+        fsGroup: 0
+        runAsUser: 0
+      volumes:
+        - hostPath:
+            path: /usr/local/tomcat/alf_data
+            type: ""
+          name: alfresco
