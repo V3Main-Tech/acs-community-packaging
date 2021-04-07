@@ -20,7 +20,7 @@ spec:
         - name: solr6
           image: 'alfresco/alfresco-search-services:2.0.0'
           securityContext:
-            allowPrivilegedEscalation: false
+            allowPrivilegeEscalation: false
             runAsUser: 0
           ports:
             - containerPort: 8983

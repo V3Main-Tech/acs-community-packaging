@@ -21,7 +21,7 @@ spec:
         - name: v3md-alfresco
           image: 'v3md/acs-community-packaging:v3macscmsC10'
           securityContext:
-            allowPrivilegedEscalation: false
+            allowPrivilegeEscalation: false
             runAsUser: 0
           env:
             - name: JAVA_OPTS
