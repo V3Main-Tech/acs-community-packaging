@@ -11,8 +11,8 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-     app: solr6
-     name: v3md-alfresco
+     name: solr6
+     app: v3md-alfresco
   template:
     metadata:
       labels:
@@ -22,9 +22,6 @@ spec:
       containers:
         - name: solr6
           image: 'alfresco/alfresco-search-services:2.0.0'
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsUser: 0
           ports:
             - containerPort: 8983
               protocol: TCP
@@ -41,14 +38,3 @@ spec:
               value: localhost
             - name: SOLR_SOLR_PORT
               value: '8983'
-          volumeMounts:
-            - mountPath: /opt/alfresco-search-services/data
-              name: solr6
-      securityContext:
-        fsGroup: 0
-        runAsUser: 0
-      volumes:
-        - hostPath:
-            path: /opt/alfresco-search-services/data
-            type: ""
-          name: solr6
