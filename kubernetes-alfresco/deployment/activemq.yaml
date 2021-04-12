@@ -5,16 +5,19 @@ metadata:
   namespace: v3md-alfresco
   selfLink: /apis/apps/v1/namespaces/v3md-alfresco/deployments/activemq
   labels:
-    app: activemq
+    app: v3md-alfresco
+    name: activemq
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: activemq
+      app: v3md-alfresco
+      name: activemq
   template:
     metadata:
       labels:
-        app: activemq
+        app: v3md-alfresco
+        name: activemq
     spec:
       containers:
         - name: activemq

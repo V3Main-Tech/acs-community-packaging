@@ -3,7 +3,8 @@ kind: PersistentVolume
 metadata:
   name: postgres-pv-volume
   labels:
-    app: postgres
+    name: postgres
+    app: v3md-alfresco
     type: local
 spec:
   storageClassName: manual
@@ -19,7 +20,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: postgres-pv-claim
   labels:
-    app: postgres
+    name: postgres
+    app: v3md-alfresco
 spec:
   storageClassName: manual
   accessModes:

@@ -3,17 +3,20 @@ kind: Deployment
 metadata:
   name: postgres
   labels:
-    app: postgres
+    name: postgres
+    app: v3md-alfresco
 spec:
   selector:
     matchLabels:
-      app: postgres
+      name: postgres
+      app: v3md-alfresco
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: postgres
+        name: postgres
+        app: v3md-alfresco
     spec:
       containers:
         - name: postgres

@@ -5,16 +5,19 @@ metadata:
   namespace: v3md-alfresco
   selfLink: /apis/apps/v1/namespaces/v3md-alfresco/deployments/solr6
   labels:
-   app: solr6
+   name: solr6
+   app: v3md-alfresco
 spec:
   replicas: 1
   selector:
     matchLabels:
      app: solr6
+     name: v3md-alfresco
   template:
     metadata:
       labels:
-       app: solr6
+       name: solr6
+       app: v3md-alfresco
     spec:
       containers:
         - name: solr6

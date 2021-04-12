@@ -5,16 +5,19 @@ metadata:
   namespace: v3md-alfresco
   selfLink: /apis/apps/v1/namespaces/v3md-alfresco/deployments/share
   labels:
-    io.kompose.service: share
+   name: share
+   app: v3md-alfresco
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: share
+     name: share
+     app: v3md-alfresco
   template:
     metadata:
       labels:
-        io.kompose.service: share
+       name: share
+       app: v3md-alfresco
     spec:
       containers:
         - name: share

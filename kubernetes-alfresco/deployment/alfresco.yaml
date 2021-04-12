@@ -6,16 +6,19 @@ metadata:
   selfLink: /apis/apps/v1/namespaces/v3md-alfresco/deployments/v3md-alfresco
   labels:
     app: v3md-alfresco
+    name: alfresco
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: v3md-alfresco
+      name: alfresco
   template:
     metadata:
       name: v3md-alfresco
       labels:
         app: v3md-alfresco
+        name: alfresco
     spec:
       containers:
         - name: v3md-alfresco
