@@ -5,16 +5,19 @@ metadata:
   namespace: v3md-alfresco
   selfLink: /apis/apps/v1/namespaces/v3md-alfresco/deployments/transform-core-aio
   labels:
-    io.kompose.service: transform-core-aio
+    app: v3md-alfresco
+    name: transform-core-aio
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: transform-core-aio
+      app: v3md-alfresco
+      name: transform-core-aio
   template:
     metadata:
       labels:
-        io.kompose.service: transform-core-aio
+        app: v3md-alfresco
+        name: transform-core-aio
     spec:
       containers:
         - name: transform-core-aio
