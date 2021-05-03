@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: v3m-alfresco-cms-api
+  resources:
+    requests:
+      storage: 4Gi
